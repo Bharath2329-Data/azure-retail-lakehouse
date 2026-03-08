@@ -1,0 +1,81 @@
+## Day 7: Data Quality Checks for Silver and Gold Layers
+
+### Objective
+Implemented data quality validations in Azure Databricks to improve trust and reliability across the Silver and Gold layers of the retail lakehouse. These checks help detect missing keys, duplicate records, invalid numeric values, broken relationships between tables, and business rule inconsistencies before downstream reporting and analytics.
+
+### Why Day 7 is Important
+Data pipelines can run successfully even when the data is wrong. Day 7 focuses on validating data quality so that dashboards, reports, and business decisions are based on reliable datasets. This step demonstrates practical data engineering skills around testing, validation, and monitoring.
+
+### Data Quality Checks Implemented
+
+#### 1. Null Checks
+Validated that important key columns are not null:
+- `customers.customer_id`
+- `products.product_id`
+- `stores.store_id`
+- `orders.order_id`
+- `order_items.order_item_id`
+- `payments.payment_id`
+
+#### 2. Duplicate Checks
+Validated that primary key columns are unique:
+- `customer_id`
+- `product_id`
+- `store_id`
+- `order_id`
+- `order_item_id`
+- `payment_id`
+
+#### 3. Numeric and Range Checks
+Validated business-related numeric columns:
+- `quantity > 0`
+- `unit_price >= 0`
+- `discount_pct between 0 and 1`
+- `amount >= 0`
+
+Used safe casting for `payments.amount` because the column is stored as a string and may contain non-numeric values.
+
+#### 4. Referential Integrity Checks
+Validated foreign key relationships:
+- every `order_items.order_id` exists in `orders`
+- every `payments.order_id` exists in `orders`
+- every `orders.customer_id` exists in `customers`
+- every `orders.store_id` exists in `stores`
+- every `order_items.product_id` exists in `products`
+
+#### 5. Business Rule Check
+Validated that completed orders have corresponding payment records:
+- checked for `Completed` orders without matching rows in `payments`
+
+### Summary Results Table
+Created a consolidated data quality results table with:
+- `check_name`
+- `failed_records`
+
+This made the notebook more professional and easier to review.
+
+### Output
+Optional validation results were written to ADLS Gen2 as a Delta table:
+
+`gold/marts/data_quality_results`
+
+### Technologies Used
+- Azure Databricks
+- PySpark
+- Delta Lake
+- Azure Data Lake Storage Gen2
+
+### Key Learning
+Day 7 showed how to add validation logic to a lakehouse pipeline and how to catch data issues before they impact Gold analytics tables or BI dashboards. This is an important step in making data platforms production-ready.
+
+### Files Added
+- `notebooks/data_quality/day7_data_quality_checks.py`
+- `screenshots/day7-dq-summary.png`
+- `screenshots/day7-null-checks.png`
+- `screenshots/day7-referential-integrity.png`
+
+### Git Commit
+```powershell
+git add .
+git commit -m "day7: add data quality checks for silver and gold layers"
+git push
