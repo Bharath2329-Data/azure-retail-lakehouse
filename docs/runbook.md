@@ -1,30 +1,64 @@
-\# Runbook
+# Runbook
 
+## Purpose
+This runbook explains how to execute the Azure Retail Lakehouse project step by step.
 
+## Step 1 — Upload Raw Data
+Upload retail CSV files into the Bronze layer in ADLS Gen2:
 
-\## Purpose
+- bronze/raw/customers/
+- bronze/raw/products/
+- bronze/raw/stores/
+- bronze/raw/orders/
+- bronze/raw/order_items/
+- bronze/raw/payments/
 
-Operational notes for the Azure Retail Lakehouse project.
+## Step 2 — Execute ADF Pipeline
+Open Azure Data Factory and run the parameterized pipeline:
 
+PL_CopyToBronze_Parameterized
 
+Example parameters:
+- pContainer = bronze
+- pSourceFolder = raw/customers
+- pFileName = customers.csv
+- pTargetFolder = raw/customers
 
-\## Day 1
+## Step 3 — Run Bronze to Silver Notebook
+In Azure Databricks, run:
 
-\- Repo initialized
+day5_bronze_to_silver
 
-\- ADLS Gen2 created
+This notebook:
+- reads Bronze CSV files
+- cleans and standardizes data
+- writes Delta tables to the Silver layer
 
-\- Containers: bronze/silver/gold/logs
+## Step 4 — Run Silver to Gold Notebook
+In Azure Databricks, run:
 
+day6_silver_to_gold
 
+This notebook:
+- reads Silver Delta tables
+- builds Gold analytics tables
+- writes results to the Gold layer
 
-\## Common Commands
+## Step 5 — Run Data Quality Checks
+In Azure Databricks, run:
 
-\- git status
+day7_data_quality_checks
 
-\- git add .
+This notebook:
+- validates key columns
+- checks duplicates
+- checks business rules
+- validates referential integrity
 
-\- git commit -m "message"
+## Step 6 — Validate CI Workflow
+Push code changes to GitHub and confirm GitHub Actions workflow completes successfully.
 
-\- git push
-
+## Output Locations
+- Silver Layer: silver/clean/
+- Gold Layer: gold/marts/
+- Data Quality Results: gold/marts/data_quality_results
