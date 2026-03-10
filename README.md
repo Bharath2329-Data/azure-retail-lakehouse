@@ -733,6 +733,119 @@ This ensures the repository structure remains consistent as the project evolves.
 • Git Version Control
 
 
+# Day 9 — Documentation, Runbook & Cost Management
+🎯 Goal
+
+Enhance the project with professional documentation and operational guidance to make the Azure Retail Lakehouse easy to understand, run, and maintain.
+
+This step focuses on improving project usability, operational readiness, and portfolio quality.
+
+### Documentation Architecture
+Project Code
+      ↓
+Technical Documentation
+      ↓
+Runbook + Cost Management
+      ↓
+Operational Readiness
+      ↓
+Portfolio / Interview Ready Project
+
+Documentation ensures that new developers or stakeholders can easily understand and execute the data pipeline.
+
+### Documentation Added
+
+The following documentation files were created:
+
+Document	Description
+architecture.md	Explains the end-to-end data architecture
+runbook.md	Step-by-step guide for executing pipelines and notebooks
+cost_management.md	Best practices to keep Azure costs low
+demo.md	Walkthrough guide for presenting the project
+
+Location:
+
+docs/
+### Architecture Overview
+
+The project follows the Medallion Architecture pattern:
+
+Retail CSV Data
+        ↓
+Azure Data Factory (Ingestion)
+        ↓
+ADLS Gen2 Bronze Layer
+        ↓
+Azure Databricks (Cleaning & Transformation)
+        ↓
+ADLS Gen2 Silver Layer
+        ↓
+Azure Databricks (Aggregations)
+        ↓
+ADLS Gen2 Gold Layer
+        ↓
+Analytics / Reporting
+
+Each layer progressively improves data quality and business usability.
+
+### Runbook
+
+The runbook explains how to execute the project:
+
+Upload raw retail CSV files to Bronze storage
+
+Run Azure Data Factory ingestion pipeline
+
+Execute Databricks notebook for Bronze → Silver transformation
+
+Execute Databricks notebook for Silver → Gold analytics
+
+Run data quality checks
+
+Verify results in Gold layer
+
+Runbook location:
+
+docs/runbook.md
+### Cost Management Strategy
+
+The project was designed to minimize cloud costs.
+
+Key practices used:
+
+• Small datasets for development
+• Azure Databricks single-node cluster
+• Auto termination after 15 minutes
+• Manual pipeline runs only
+• No active triggers running continuously
+
+Cost guide location:
+
+docs/cost_management.md
+### Resource Cleanup
+
+To avoid unnecessary Azure charges:
+
+Terminate Databricks clusters after use
+
+Keep ADF triggers disabled
+
+Delete the resource group when the project is no longer needed
+
+Example cleanup command:
+
+az group delete --name rg-retail-lakehouse-dev
+### Project Evidence
+
+Screenshots were captured throughout development to document pipeline execution, transformations, and CI automation.
+
+Example files:
+
+screenshots/day4-pipeline.png
+screenshots/day5-silver-delta.png
+screenshots/day6-daily-revenue.png
+screenshots/day7-dq-summary.png
+screenshots/day8-github-actions-success.png
 
 
 
