@@ -848,5 +848,9 @@ screenshots/day7-dq-summary.png
 screenshots/day8-github-actions-success.png
 
 
+👤 Author
 
+Bharath
+Data Engineer
+SQL | Python | Azure | Power BI
 
