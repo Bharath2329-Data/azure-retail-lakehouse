@@ -43,6 +43,43 @@ SQL Analytics / Reporting
 
 ---
 
+## Architecture Diagram (Layered Lakehouse Design)
+
+            ┌──────────────────────────────┐
+            │      Retail CSV Sources      │
+            │ (customers, orders, etc.)   │
+            └──────────────┬───────────────┘
+                           │
+                           ▼
+            ┌──────────────────────────────┐
+            │   Azure Data Factory (ADF)   │
+            │   Parameterized Pipelines    │
+            └──────────────┬───────────────┘
+                           │
+                           ▼
+    ┌────────────────────────────────────────────┐
+    │            BRONZE LAYER (ADLS)            │
+    │        Raw Data (No Transformations)       │
+    └───────────────────┬────────────────────────┘
+                        │
+                        ▼
+    ┌────────────────────────────────────────────┐
+    │         SILVER LAYER (Delta Tables)        │
+    │   Cleaned, Typed, Deduplicated Data        │
+    └───────────────────┬────────────────────────┘
+                        │
+                        ▼
+    ┌────────────────────────────────────────────┐
+    │           GOLD LAYER (Analytics)           │
+    │   Aggregations & Business Metrics          │
+    └───────────────────┬────────────────────────┘
+                        │
+                        ▼
+    ┌────────────────────────────────────────────┐
+    │      SQL Analytics / Power BI / Reports    │
+    └────────────────────────────────────────────┘
+
+
 ##  Technology Stack
 
 - Azure Data Lake Storage Gen2 (ADLS)
@@ -285,4 +322,11 @@ Project is operationally documented and easy to understand
 - Prepared LinkedIn post
 - Organized screenshots for portfolio
 - Performed final Git commit
+
+  
+---
+
+## Author
+
+**Bharath Reddy**
 
