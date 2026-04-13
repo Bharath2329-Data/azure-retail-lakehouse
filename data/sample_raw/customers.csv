@@ -1,0 +1,13 @@
+customer_id,first_name,last_name,email,phone,signup_date,loyalty_tier
+C00001,Bharath,Reddy,bharath.reddy@example.com,+1-817-5501-1001,2024-07-10,Bronze
+C00002,Aisha,Khan,aisha.khan@example.com,+1-817-5502-1002,2024-07-19,Silver
+C00003,Noah,Smith,noah.smith@example.com,+1-817-5503-1003,2024-07-28,Gold
+C00004,Olivia,Johnson,olivia.johnson@example.com,+1-817-5504-1004,2024-08-06,Bronze
+C00005,Liam,Brown,liam.brown@example.com,+1-817-5505-1005,2024-08-15,Silver
+C00006,Emma,Davis,emma.davis@example.com,+1-817-5506-1006,2024-08-24,Gold
+C00007,Mia,Wilson,mia.wilson@example.com,+1-817-5507-1007,2024-09-02,Bronze
+C00008,Ethan,Taylor,ethan.taylor@example.com,+1-817-5508-1008,2024-09-11,Silver
+C00009,Sophia,Anderson,sophia.anderson@example.com,+1-817-5509-1009,2024-09-20,Gold
+C00010,Lucas,Thomas,lucas.thomas@example.com,+1-817-5510-1010,2024-09-29,Bronze
+C00011,Ava,Moore,ava.moore@example.com,+1-817-5511-1011,2024-10-08,Silver
+C00012,James,Jackson,james.jackson@example.com,+1-817-5512-1012,2024-10-17,Gold

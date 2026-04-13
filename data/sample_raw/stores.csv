@@ -1,0 +1,6 @@
+store_id,store_name,city,state,open_date,manager
+S001,RetailMart Dallas,Dallas,TX,2018-06-30,A. Nguyen
+S002,RetailMart Fort Worth,Fort Worth,TX,2018-12-27,J. Patel
+S003,RetailMart Austin,Austin,TX,2019-06-25,M. Garcia
+S004,RetailMart Houston,Houston,TX,2019-12-22,S. Johnson
+S005,RetailMart San Antonio,San Antonio,TX,2020-06-19,R. Kim

@@ -1,0 +1,11 @@
+product_id,product_name,category,brand,unit_price,is_active
+P0001,Beverage Item 1,Beverages,Acme,9.11,Y
+P0002,Snack Item 2,Snacks,GoodChoice,5.04,Y
+P0003,Househol Item 3,Household,FreshFarm,16.80,Y
+P0004,Personal Car Item 4,Personal Care,HomeBasics,3.20,Y
+P0005,Produc Item 5,Produce,PureCare,14.09,Y
+P0006,Beverage Item 6,Beverages,Acme,10.08,Y
+P0007,Snack Item 7,Snacks,GoodChoice,2.86,Y
+P0008,Househol Item 8,Household,FreshFarm,13.41,Y
+P0009,Personal Car Item 9,Personal Care,HomeBasics,1.87,Y
+P0010,Produc Item 10,Produce,PureCare,11.69,Y
